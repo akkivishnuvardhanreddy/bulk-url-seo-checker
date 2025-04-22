@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bulk URL SEO Checker</title>
+</head>
+<body>
+    <h2>Bulk URL SEO Checker</h2>
+    <form method="post">
+        <textarea name="urls" rows="10" cols="60" placeholder="Enter URLs, one per line..."></textarea><br><br>
+        <button type="submit">Check</button>
+    </form>
+    {% if results %}
+    <h3>Results:</h3>
+    <table border="1">
+        <tr>
+            <th>URL</th>
+            <th>Status</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Canonical</th>
+            <th>H1</th>
+            <th>Indexability</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.url }}</td>
+            <td>{{ result.status }}</td>
+            <td>{{ result.title }}</td>
+            <td>{{ result.description }}</td>
+            <td>{{ result.canonical }}</td>
+            <td>{{ result.h1 }}</td>
+            <td>{{ result.indexability }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
